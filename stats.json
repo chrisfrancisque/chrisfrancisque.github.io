@@ -1,0 +1,11 @@
+{
+  "user": "chrisfrancisque",
+  "window": {
+    "from": null,
+    "to": null
+  },
+  "commits_last_year": null,
+  "contributions_last_year": null,
+  "updated_at": null,
+  "_note": "Placeholder — overwritten on first run of .github/workflows/update-stats.yml."
+}

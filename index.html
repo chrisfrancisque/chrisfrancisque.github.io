@@ -1,366 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Christopher Francisque - Machine Learning Researcher & Engineer. Specializing in parameter-efficient fine-tuning, distributed training, and AI systems.">
-    <meta name="keywords" content="Machine Learning, AI, Deep Learning, PyTorch, Computer Science, Research">
-    <meta name="author" content="Christopher Francisque">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0e14" />
+  <meta name="color-scheme" content="dark" />
 
-    <title>Christopher Francisque | ML Researcher & Engineer</title>
+  <title>Christopher Francisque — Software Engineer</title>
+  <meta name="description"
+        content="Christopher Francisque — software engineer, ML researcher, and Master's student in Computer Science at the University of Pennsylvania. Currently a Product Management Intern at Pegasystems." />
+  <meta name="author" content="Christopher Francisque" />
+  <link rel="canonical" href="https://christopherfrancisque.com/" />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;500;600&display=swap"
-        rel="stylesheet">
+  <!-- Open Graph / social preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://christopherfrancisque.com/" />
+  <meta property="og:title" content="Christopher Francisque — Software Engineer" />
+  <meta property="og:description"
+        content="Software engineer, ML researcher, and Master's student in Computer Science at Penn." />
+  <meta property="og:image" content="https://christopherfrancisque.com/assets/img/headshot.JPG" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
 
-    <link rel="stylesheet" href="assets/css/typewriter-style.css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <div class="nav-brand">CF</div>
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-image">
-                    <img src="https://raw.githubusercontent.com/chrisfrancisque/chrisfrancisque.github.io/main/assets/img/headshot.JPG"
-                        alt="Christopher Francisque">
-                    <div class="image-backdrop"></div>
-                </div>
-                <div class="hero-text">
-                    <p class="hero-greeting">Hi, I'm</p>
-                    <h1 class="hero-name">Christopher Francisque</h1>
-                    <h2 class="hero-title">CS @ UPenn, ML @ Brandeis</h2>
-                    <p class="hero-description">
-                        Passionate about computer science, physics, and business. I want to solve the world's hardest
-                        problems with technology.
-                        I am seeking data science and machine learning internships for Summer 2026 where I can apply my
-                        skills
-                        to build scalable models, deliver insights, and contribute to software projects with real-world
-                        impact.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">View My Work</a>
-                        <a href="assets/files/resume.pdf" class="btn btn-secondary" target="_blank">
-                            <i class="fas fa-download"></i> Resume
-                        </a>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://github.com/chrisfrancisque" target="_blank" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://linkedin.com/in/christopherfrancisque" target="_blank" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="mailto:chrisfra@seas.upenn.edu" aria-label="Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <a href="#about">
-                <i class="fas fa-chevron-down"></i>
+  <!-- Top navigation -->
+  <header class="nav" id="nav">
+    <div class="nav__inner container">
+      <a href="#top" class="nav__brand" aria-label="Christopher Francisque — home">
+        <span class="nav__brand-mark">CF</span>
+      </a>
+      <nav class="nav__menu" id="nav-menu" aria-label="Primary">
+        <a href="#about" class="nav__link">About</a>
+        <a href="#experience" class="nav__link">Experience</a>
+        <a href="#projects" class="nav__link">Projects</a>
+        <a href="#skills" class="nav__link">Skills</a>
+        <a href="./assets/files/resume.pdf" class="nav__link nav__link--cta" target="_blank" rel="noopener">
+          Resume <span aria-hidden="true">↗</span>
+        </a>
+      </nav>
+      <button class="nav__toggle" id="nav-toggle"
+              aria-label="Toggle navigation"
+              aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <p class="hero__eyebrow"><span class="hero__pulse" aria-hidden="true"></span>Available — email me if you want to chat</p>
+          <h1 class="hero__title">
+            Hi, I'm <span class="hero__name">Christopher Francisque</span>.
+          </h1>
+          <p class="hero__lede">
+            I build software at the intersection of <strong>systems</strong> and <strong>machine learning</strong>.
+            Currently a <strong>Product Management Intern at Pegasystems</strong> and a Master's student in
+            Computer Science at the University of Pennsylvania.
+          </p>
+          <p class="hero__sub">
+            Previously: Software Engineer at General Dynamics Mission Systems, ML Research Assistant at Brandeis,
+            and Manufacturing Engineer at Raytheon. I hold an active Secret security clearance.
+          </p>
+
+          <!-- GitHub stats widget -->
+          <div class="stats" id="stats" aria-live="polite">
+            <a class="stats__card" href="https://github.com/chrisfrancisque" target="_blank" rel="noopener" aria-label="View GitHub profile">
+              <svg class="stats__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.55v-1.93c-3.2.7-3.87-1.54-3.87-1.54-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.69 1.24 3.34.95.1-.74.4-1.24.72-1.53-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11.05 11.05 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.41-5.25 5.69.41.36.78 1.06.78 2.13v3.16c0 .31.21.66.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/>
+              </svg>
+              <div class="stats__body">
+                <span class="stats__num" id="commits-count" data-fallback="—">…</span>
+                <span class="stats__label">commits in the last 365 days</span>
+              </div>
             </a>
+            <p class="stats__note" id="stats-note">
+              <span id="stats-updated">Updated daily via GitHub Actions.</span>
+            </p>
+          </div>
+
+          <!-- Contact CTAs -->
+          <div class="cta">
+            <a class="btn btn--primary" href="mailto:chrisfrancisque1@gmail.com">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 6.5A2.5 2.5 0 0 1 4.5 4h15A2.5 2.5 0 0 1 22 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 17.5v-11Zm2.5-.5a.5.5 0 0 0-.5.5v.32l8 5.18 8-5.18V6.5a.5.5 0 0 0-.5-.5h-15Zm15.5 2.93-7.46 4.83a1 1 0 0 1-1.08 0L4 8.93V17.5a.5.5 0 0 0 .5.5h15a.5.5 0 0 0 .5-.5V8.93Z"/></svg>
+              Email me
+            </a>
+            <a class="btn btn--ghost" href="https://github.com/chrisfrancisque" target="_blank" rel="noopener">
+              GitHub <span aria-hidden="true">↗</span>
+            </a>
+            <a class="btn btn--ghost" href="https://www.linkedin.com/in/christopherfrancisque" target="_blank" rel="noopener">
+              LinkedIn <span aria-hidden="true">↗</span>
+            </a>
+            <a class="btn btn--ghost" href="./assets/files/resume.pdf" target="_blank" rel="noopener">
+              Resume <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <p class="hero__contact">
+            <span class="hero__contact-line">
+              <span class="hero__contact-label">Personal</span>
+              <a href="mailto:chrisfrancisque1@gmail.com">chrisfrancisque1@gmail.com</a>
+            </span>
+            <span class="hero__contact-line">
+              <span class="hero__contact-label">Academic</span>
+              <a href="mailto:chrisfra@seas.upenn.edu">chrisfra@seas.upenn.edu</a>
+            </span>
+          </p>
         </div>
+
+        <div class="hero__photo">
+          <div class="hero__photo-frame">
+            <img src="./assets/img/headshot.JPG"
+                 alt="Portrait of Christopher Francisque"
+                 width="320" height="400" loading="eager" />
+          </div>
+          <div class="hero__photo-glow" aria-hidden="true"></div>
+        </div>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        I'm a Master's student studying Computer Science at the University of Pennsylvania and
-                        currently working as a Machine Learning Researcher at Brandeis University under Hongfu Liu.
-                        My research focuses on parameter-centric learning, data-centric learning, and LLM knowledge
-                        editing.
-                    </p>
-                    <p>
-                        Previously, I worked as a manufacturing engineer in high-volume production environments, where I
-                        gained hands-on experience with data analysis, data pipelines, and data cleaning.
-                        I saw firsthand how data-driven decision making could uncover risks, highlight hidden
-                        opportunities, and improve manufacturing lines and supply chain operations.
-                        I was so inspired I decided to fully pursue a career in data science and machine learning, where
-                        I can apply these skills to drive even greater impact.
-                    </p>
-                    <p>
-                        I am a U.S. citizen with an Active Secret Security Clearance.
-                        I am eager to bring my combination of technical expertise and proven impact to my next role, and
-                        I am fully open to relocating anywhere in the United States.
-                        Outside of work and academics, I like to learn about nutrition and bodybuilding, play
-                        basketball, read, and play chess.
-                    </p>
-                </div>
-                <div class="about-highlights">
-                    <div class="highlight-item">
-                        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-                        <div>
-                            <h4>Education</h4>
-                            <p><strong class="school-name">University of Pennsylvania</strong></p>
-                            <p class="degree-name">Master of Computer Information and Technology</p>
-                            <p><strong class="school-name">University of Massachusetts</strong></p>
-                            <p class="degree-name">B.S. Mechanical Engineering</p>
-                        </div>
-                    </div>
-                    <div class="highlight-item">
-                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                        <div>
-                            <h4>Location</h4>
-                            <p>Waltham, MA</p>
-                        </div>
-                    </div>
-                    <div class="highlight-item">
-                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
-                        <div>
-                            <h4>Clearance</h4>
-                            <p>Active Secret</p>
-                        </div>
-                    </div>
-                </div>
+    <!-- About -->
+    <section class="section" id="about">
+      <div class="container section__inner">
+        <h2 class="section__title"><span class="section__num">01</span> About</h2>
+        <div class="about__grid">
+          <p>
+            I'm a software engineer and ML researcher who likes shipping systems that touch the messy real world —
+            production lines, autonomous hardware, distributed training. My background spans
+            <strong>mechanical engineering</strong> (B.S. from UMass Amherst) and
+            <strong>computer science</strong> (M.S. in progress at Penn), so I tend to think about
+            problems from both the physical and the algorithmic side.
+          </p>
+          <p>
+            Most recently I've worked on automated test-plan generation with LLMs at General Dynamics, and
+            parameter-efficient fine-tuning research at Brandeis where we trained 0.037% of a 110M-param model
+            and still got 82–90% accuracy. Right now I'm interning in product at Pegasystems and learning
+            how the other side of the build process works.
+          </p>
+          <p>
+            Outside of work I'm building a self-driving toy car (Raspberry Pi 5, PyTorch CNN, ~15 Hz closed-loop
+            control), and trying to keep <a href="https://github.com/chrisfrancisque" target="_blank" rel="noopener">my GitHub</a>
+            green.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="section" id="experience">
+      <div class="container section__inner">
+        <h2 class="section__title"><span class="section__num">02</span> Experience</h2>
+        <ol class="timeline">
+          <li class="timeline__item">
+            <div class="timeline__meta">
+              <span class="timeline__date">May 2026 — Present</span>
+              <span class="timeline__location">Cambridge, MA</span>
             </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="section section-alt">
-        <div class="container">
-            <h2 class="section-title">Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">June 2025 - Present</span>
-                        <h3>Machine Learning Researcher</h3>
-                        <h4>Brandeis University | Waltham, MA</h4>
-                        <ul>
-                            <li>Implemented 3 research papers including LoRA and mask fine-tuning, achieving 82-90%
-                                accuracy while training only 0.037% of parameters</li>
-                            <li>Built distributed training pipeline across 8 TPU cores handling 110M parameters, solving
-                                critical PyTorch XLA synchronization issues</li>
-                            <li>Developed gradient tracking system to analyze parameter evolution, identifying critical
-                                layers whose removal caused complete model collapse</li>
-                            <li>Created pruning pipelines using learned binary masks, improving weak models by 4%</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">June 2022 - June 2025</span>
-                        <h3>Manufacturing Engineer</h3>
-                        <h4>Raytheon | Andover, MA</h4>
-                        <ul>
-                            <li>Developed Python and C++ automation scripts for production data analysis using STL
-                                containers and file I/O</li>
-                            <li>Led root cause analysis resulting in $60,000 annual cost savings</li>
-                            <li>Programmed automated manufacturing systems achieving $100,000+ in cost reductions</li>
-                            <li>Designed custom fixtures reducing process times by 10-30%</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="timeline__body">
+              <h3 class="timeline__role">Product Management Intern <span class="timeline__sep">·</span> <span class="timeline__org">Pegasystems</span></h3>
+              <ul class="timeline__bullets">
+                <li>Currently building product chops alongside engineering — partnering with engineering, design, and customer-facing teams on enterprise workflow automation.</li>
+              </ul>
             </div>
-        </div>
-    </section>
+          </li>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Parameter-Efficient Fine-tuning Study</h3>
-                        <div class="project-links">
-                            <a href="https://github.com/chrisfrancisque/BERT-MFT" target="_blank" aria-label="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        Comparative study of FFT, LoRA, and MFT methods on BERT-base model.
-                        Achieved 4.24% accuracy improvement on under-trained models using mask fine-tuning
-                        from 2025 ICLR paper while training only 0.037% of parameters.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">Transformers</span>
-                        <span class="tag">LoRA</span>
-                        <span class="tag">BERT</span>
-                        <span class="tag">Google Cloud Platform</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Aircraft 6-DOF Simulation</h3>
-                        <div class="project-links">
-                            <a href="https://christopherfrancisque.com/Aircraft-6DOF-Simulation/" target="_blank"
-                                aria-label="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        High-fidelity flight dynamics simulation in C++ using physics-based models and
-                        numerical integration. Optimized computational performance through efficient data
-                        structures and validated against NASA data.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">C++</span>
-                        <span class="tag">Physics Simulation</span>
-                        <span class="tag">Numerical Methods</span>
-                        <span class="tag">Matplotlib</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Portfolio Website</h3>
-                        <div class="project-links">
-                            <a href="https://github.com/chrisfrancisque/chrisfrancisque.github.io" target="_blank"
-                                aria-label="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        Code for this website to display myself and my work.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Javascript</span>
-                        <span class="tag">HTML</span>
-                        <span class="tag">CSS</span>
-                    </div>
-                </div>
+          <li class="timeline__item">
+            <div class="timeline__meta">
+              <span class="timeline__date">Jan 2026 — May 2026</span>
+              <span class="timeline__location">Dedham, MA</span>
             </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="section section-dark">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3><i class="fas fa-code"></i> Languages</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">Python</span>
-                        <span class="skill-item">C++</span>
-                        <span class="skill-item">Java</span>
-                        <span class="skill-item">SQL</span>
-                        <span class="skill-item">Bash</span>
-                        <span class="skill-item">MATLAB</span>
-                        <span class="skill-item">Javascript</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-brain"></i> ML/AI Frameworks</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">PyTorch</span>
-                        <span class="skill-item">TensorFlow</span>
-                        <span class="skill-item">Transformers</span>
-                        <span class="skill-item">Hugging Face</span>
-                        <span class="skill-item">LoRA</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-tools"></i> Tools & Platforms</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">Google Cloud Platform</span>
-                        <span class="skill-item">AWS</span>
-                        <span class="skill-item">Docker</span>
-                        <span class="skill-item">Git</span>
-                        <span class="skill-item">Linux</span>
-                        <span class="skill-item">Weights & Biases</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-chart-line"></i> Data Science</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">Pandas</span>
-                        <span class="skill-item">NumPy</span>
-                        <span class="skill-item">Jupyter</span>
-                        <span class="skill-item">Data Visualization</span>
-                    </div>
-                </div>
+            <div class="timeline__body">
+              <h3 class="timeline__role">Software Engineer <span class="timeline__sep">·</span> <span class="timeline__org">General Dynamics Mission Systems</span></h3>
+              <ul class="timeline__bullets">
+                <li>Built an automated pipeline that parses C++ source and generates unit-test plans via the OpenAI API — eliminating ~80% of manual test-planning effort and saving 100+ engineering hours per month.</li>
+                <li>Wrote a Python key-generation script to test device handling of multiple encryption key formats, achieving 100% accuracy across 264 test vectors.</li>
+                <li>Created a GitLab CI/CD automation script that eliminated build failures on new runners.</li>
+              </ul>
             </div>
-        </div>
-    </section>
+          </li>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section section-alt">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <p class="contact-text">
-                    I'm currently seeking data science and machine learning internship opportunities
-                    for Summer 2026. Feel free to reach out if you'd like to discuss research,
-                    potential collaborations, or opportunities!
-                </p>
-                <div class="contact-methods">
-                    <a href="mailto:chrisfra@seas.upenn.edu" class="contact-card">
-                        <i class="fas fa-envelope"></i>
-                        <h3>Email</h3>
-                        <p>chrisfra@seas.upenn.edu</p>
-                    </a>
-                    <a href="https://linkedin.com/in/christopherfrancisque" target="_blank" class="contact-card">
-                        <i class="fab fa-linkedin"></i>
-                        <h3>LinkedIn</h3>
-                        <p>Connect with me</p>
-                    </a>
-                    <a href="https://github.com/chrisfrancisque" target="_blank" class="contact-card">
-                        <i class="fab fa-github"></i>
-                        <h3>GitHub</h3>
-                        <p>View my code</p>
-                    </a>
-                </div>
+          <li class="timeline__item">
+            <div class="timeline__meta">
+              <span class="timeline__date">Jun 2025 — Jan 2026</span>
+              <span class="timeline__location">Waltham, MA</span>
             </div>
-        </div>
+            <div class="timeline__body">
+              <h3 class="timeline__role">Machine Learning Research Assistant <span class="timeline__sep">·</span> <span class="timeline__org">Brandeis University</span></h3>
+              <ul class="timeline__bullets">
+                <li>Implemented methods from 3 research papers, achieving 82–90% accuracy while training only 0.037% of model parameters.</li>
+                <li>Developed pruning pipelines using learned binary masks to identify redundant parameters, improving weak models by 4%.</li>
+                <li>Built a gradient-tracking system that surfaced critical embedding layers — &lt;0.01% of weights whose removal caused complete model collapse.</li>
+                <li>Built a distributed training pipeline across 8 TPU cores handling 110M parameters and 67K samples; debugged PyTorch XLA synchronization deadlocks that were breaking training runs.</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="timeline__item">
+            <div class="timeline__meta">
+              <span class="timeline__date">Jun 2025 — Aug 2025</span>
+              <span class="timeline__location">San Francisco, CA</span>
+            </div>
+            <div class="timeline__body">
+              <h3 class="timeline__role">Software Engineer <span class="timeline__sep">·</span> <span class="timeline__org">Arcada</span></h3>
+              <ul class="timeline__bullets">
+                <li>Identified a security vulnerability and rolled out Cloudflare infrastructure with rate limiting — reduced bot attacks by 80%.</li>
+                <li>Helped scale the platform to 100K+ unique users and $112K in revenue over 3 months, including customers like OpenAI and Google.</li>
+                <li>Owned end-to-end feature work on core platform capabilities including a voting algorithm and scroll pagination.</li>
+                <li>Improved product performance by 30% through data-driven optimization — bottleneck analysis, query improvements, and A/B testing.</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="timeline__item">
+            <div class="timeline__meta">
+              <span class="timeline__date">Jun 2022 — Jun 2025</span>
+              <span class="timeline__location">Andover, MA</span>
+            </div>
+            <div class="timeline__body">
+              <h3 class="timeline__role">Manufacturing Engineer <span class="timeline__sep">·</span> <span class="timeline__org">Raytheon</span></h3>
+              <ul class="timeline__bullets">
+                <li>Led manufacturing improvement projects spanning root-cause analysis, automation programming, fixture design, and training standardization — delivering $160K+ in cost savings, 10–30% cycle-time reductions, and a 25% cut in operator certification time.</li>
+                <li>Developed Python and C++ scripts that automated production data analysis for defect rates, operator performance, and statistical process control.</li>
+              </ul>
+            </div>
+          </li>
+        </ol>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Christopher Francisque. Built with passion.</p>
-        </div>
-    </footer>
+    <!-- Projects -->
+    <section class="section" id="projects">
+      <div class="container section__inner">
+        <h2 class="section__title"><span class="section__num">03</span> Projects</h2>
+        <div class="projects">
+          <article class="project">
+            <header class="project__head">
+              <h3 class="project__title">Self-Driving Toy Car</h3>
+              <span class="project__date">Jan 2026 — Present</span>
+            </header>
+            <p class="project__summary">
+              Autonomous RC car running an end-to-end CNN that maps camera frames to continuous steering and
+              throttle. Designed for real-time inference on edge hardware.
+            </p>
+            <ul class="project__bullets">
+              <li>Raspberry Pi 5 + PCA9685 for precise PWM control of motors and servos.</li>
+              <li>PyTorch CNN trained on collected driving data, deployed for on-device inference.</li>
+              <li>Closed-loop control at 15+ Hz with sub-220 ms end-to-end latency.</li>
+            </ul>
+            <div class="project__tags">
+              <span>Python</span><span>PyTorch</span><span>Raspberry Pi</span><span>Computer Vision</span>
+            </div>
+          </article>
 
-    <script src="assets/js/main.js"></script>
+          <article class="project">
+            <header class="project__head">
+              <h3 class="project__title">Aircraft 6-DOF Flight Simulator</h3>
+              <span class="project__date">Dec 2024 — Mar 2025</span>
+            </header>
+            <p class="project__summary">
+              High-fidelity flight dynamics simulator written in C++, validated against NASA reference data.
+            </p>
+            <ul class="project__bullets">
+              <li>Physics-based 6-DOF rigid body dynamics with numerical integration tuned for stability.</li>
+              <li>Optimized data structures and reduced redundant aerodynamic and atmospheric calculations.</li>
+              <li>Visualization pipeline using <code>matplotlibcpp</code> for validating against reference data.</li>
+            </ul>
+            <div class="project__tags">
+              <span>C++</span><span>Numerical Methods</span><span>Physics</span>
+            </div>
+            <div class="project__links">
+              <a href="https://github.com/chrisfrancisque" target="_blank" rel="noopener">View code <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="project">
+            <header class="project__head">
+              <h3 class="project__title">Parameter-Efficient Fine-Tuning Study</h3>
+              <span class="project__date">Jun 2025 — Jan 2026</span>
+            </header>
+            <p class="project__summary">
+              Empirical comparison of Full Fine-Tuning, LoRA, and Mask Fine-Tuning on BERT-base. Trained on
+              distributed TPU pods.
+            </p>
+            <ul class="project__bullets">
+              <li>4.24% accuracy improvement using MFT on under-trained models.</li>
+              <li>Trained only 0.037% of 110M parameters while staying competitive with full fine-tuning.</li>
+              <li>Identified critical embedding layers (&lt;0.01% of weights) whose removal collapses the model.</li>
+            </ul>
+            <div class="project__tags">
+              <span>PyTorch</span><span>Transformers</span><span>LoRA</span><span>TPU</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <header class="project__head">
+              <h3 class="project__title">LLM Test-Plan Generator</h3>
+              <span class="project__date">Jan 2026 — May 2026</span>
+            </header>
+            <p class="project__summary">
+              Pipeline that parses C++ source files and generates structured unit-test plans using the OpenAI API.
+              Built at General Dynamics.
+            </p>
+            <ul class="project__bullets">
+              <li>Eliminated ~80% of manual test-planning effort.</li>
+              <li>Saved 100+ engineering hours per month at deployment.</li>
+              <li>Designed prompts and validators to keep generated plans grounded in real symbol tables.</li>
+            </ul>
+            <div class="project__tags">
+              <span>Python</span><span>OpenAI API</span><span>C++ Parsing</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section" id="skills">
+      <div class="container section__inner">
+        <h2 class="section__title"><span class="section__num">04</span> Skills</h2>
+        <div class="skills">
+          <div class="skills__group">
+            <h3 class="skills__title">Languages</h3>
+            <ul class="chips">
+              <li>Python</li><li>C++</li><li>JavaScript / TypeScript</li><li>MATLAB</li><li>Java</li><li>SQL</li><li>Bash</li>
+            </ul>
+          </div>
+          <div class="skills__group">
+            <h3 class="skills__title">AI / ML</h3>
+            <ul class="chips">
+              <li>PyTorch</li><li>Transformers</li><li>Hugging Face</li><li>LLM Fine-tuning</li><li>LoRA</li><li>NumPy</li><li>Pandas</li>
+            </ul>
+          </div>
+          <div class="skills__group">
+            <h3 class="skills__title">Tools &amp; Infra</h3>
+            <ul class="chips">
+              <li>Google Cloud Platform</li><li>AWS</li><li>Git</li><li>Linux</li><li>Weights &amp; Biases</li><li>Jupyter</li><li>Docker</li>
+            </ul>
+          </div>
+          <div class="skills__group">
+            <h3 class="skills__title">Education</h3>
+            <ul class="edu">
+              <li>
+                <strong>University of Pennsylvania</strong> — M.S. Computer Science <span class="edu__date">Jun 2027</span>
+              </li>
+              <li>
+                <strong>UMass Amherst</strong> — B.S. Mechanical Engineering <span class="edu__date">Jun 2024</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume -->
+    <section class="section section--cta" id="resume">
+      <div class="container section__inner section__inner--cta">
+        <div>
+          <h2 class="section__title section__title--cta">Want the long version?</h2>
+          <p class="section__sub">
+            Grab the full resume — current roles, projects, and references all in one PDF.
+          </p>
+        </div>
+        <a class="btn btn--primary btn--lg" href="./assets/files/resume.pdf" target="_blank" rel="noopener" download>
+          Download resume (PDF)
+          <svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18">
+            <path fill="currentColor" d="M5 20h14v-2H5v2Zm7-18-6 6h4v6h4v-6h4l-6-6Z"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__left">
+        © <span id="year"></span> Christopher Francisque ·
+        <a href="mailto:chrisfrancisque1@gmail.com">chrisfrancisque1@gmail.com</a>
+      </p>
+      <p class="footer__right">
+        <a href="https://github.com/chrisfrancisque/chrisfrancisque.github.io" target="_blank" rel="noopener">
+          Source on GitHub <span aria-hidden="true">↗</span>
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="./assets/js/main.js" defer></script>
 </body>
-
 </html>

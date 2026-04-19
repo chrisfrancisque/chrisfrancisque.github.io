@@ -1,0 +1,134 @@
+name: Update GitHub stats
+
+# Runs once a day to refresh stats.json with the rolling
+# "commits in the last 365 days" count fetched from the
+# GitHub GraphQL API. Also runs on push to main and on demand.
+
+on:
+  schedule:
+    # Daily at 06:30 UTC (~02:30 EDT). Off-peak so the commit
+    # is invisible during typical browsing hours.
+    - cron: '30 6 * * *'
+  workflow_dispatch: {}
+  push:
+    branches: [main, master]
+    paths:
+      - '.github/workflows/update-stats.yml'
+
+# Allow the workflow to push the regenerated stats.json back to the repo.
+permissions:
+  contents: write
+
+# Prevent concurrent runs from racing on the same file.
+concurrency:
+  group: update-stats
+  cancel-in-progress: false
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+        with:
+          # Need the full token to push back.
+          persist-credentials: true
+
+      - name: Fetch contribution stats from GitHub GraphQL
+        id: fetch
+        env:
+          # Default GITHUB_TOKEN works for the public contributions query
+          # because contribution data is public for public profiles.
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USER: chrisfrancisque
+        run: |
+          set -euo pipefail
+          NOW="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          # GitHub's contributions API caps the from/to range at 1 year.
+          ONE_YEAR_AGO="$(date -u -d '365 days ago' +%Y-%m-%dT%H:%M:%SZ)"
+
+          read -r -d '' QUERY <<EOF || true
+          query(\$login: String!, \$from: DateTime!, \$to: DateTime!) {
+            user(login: \$login) {
+              contributionsCollection(from: \$from, to: \$to) {
+                totalCommitContributions
+                contributionCalendar { totalContributions }
+              }
+            }
+          }
+          EOF
+
+          PAYLOAD=$(jq -n \
+            --arg query "$QUERY" \
+            --arg login "$USER" \
+            --arg from "$ONE_YEAR_AGO" \
+            --arg to "$NOW" \
+            '{query: $query, variables: {login: $login, from: $from, to: $to}}')
+
+          RESPONSE=$(curl -fsSL \
+            -H "Authorization: bearer $GH_TOKEN" \
+            -H "Content-Type: application/json" \
+            -X POST \
+            -d "$PAYLOAD" \
+            https://api.github.com/graphql)
+
+          # Surface API errors loudly instead of silently writing zeros.
+          if echo "$RESPONSE" | jq -e '.errors' >/dev/null; then
+            echo "::error::GraphQL returned errors: $(echo "$RESPONSE" | jq -c '.errors')"
+            exit 1
+          fi
+
+          COMMITS=$(echo "$RESPONSE" | jq '.data.user.contributionsCollection.totalCommitContributions')
+          CONTRIBUTIONS=$(echo "$RESPONSE" | jq '.data.user.contributionsCollection.contributionCalendar.totalContributions')
+
+          if [ "$COMMITS" = "null" ] || [ "$CONTRIBUTIONS" = "null" ]; then
+            echo "::error::Got null counts back. Full response: $RESPONSE"
+            exit 1
+          fi
+
+          jq -n \
+            --argjson commits "$COMMITS" \
+            --argjson contributions "$CONTRIBUTIONS" \
+            --arg from "$ONE_YEAR_AGO" \
+            --arg to "$NOW" \
+            --arg user "$USER" \
+            '{
+              user: $user,
+              window: {from: $from, to: $to},
+              commits_last_year: $commits,
+              contributions_last_year: $contributions,
+              updated_at: $to
+            }' > stats.json
+
+          echo "Wrote stats.json:"
+          cat stats.json
+
+      - name: Commit and push stats.json (if changed)
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Ignore the volatile updated_at timestamp when checking for diffs,
+          # so we don't commit a no-op change every day. We compare commits/
+          # contributions only.
+          if [ -f stats.json ]; then
+            git add stats.json
+            if git diff --staged --quiet -- stats.json; then
+              echo "No changes to stats.json. Skipping commit."
+              exit 0
+            fi
+
+            # Compare meaningful fields against HEAD to skip cosmetic-only diffs.
+            OLD=$(git show HEAD:stats.json 2>/dev/null | jq '{commits_last_year, contributions_last_year}' 2>/dev/null || echo "{}")
+            NEW=$(jq '{commits_last_year, contributions_last_year}' stats.json)
+            if [ "$OLD" = "$NEW" ]; then
+              echo "Only the timestamp changed; not committing."
+              git restore --staged stats.json
+              exit 0
+            fi
+
+            git commit -m "chore(stats): refresh GitHub commit count [skip ci]"
+            git push
+          fi

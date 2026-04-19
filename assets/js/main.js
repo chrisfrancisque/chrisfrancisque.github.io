@@ -1,113 +1,150 @@
-// Mobile Menu Toggle
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('nav-menu');
+/**
+ * Christopher Francisque — main.js
+ *
+ * Responsibilities (kept intentionally small):
+ *   1. Mobile nav toggle.
+ *   2. Sticky-nav scroll state + active-section highlighting.
+ *   3. Smooth scroll for in-page anchors (with reduced-motion respect).
+ *   4. Scroll-triggered fade-in (Intersection Observer).
+ *   5. Live GitHub commits counter — fetches /stats.json, falls back to a
+ *      direct GitHub GraphQL call only if you've supplied a public token
+ *      (we don't, by default — the static stats.json is the source of truth).
+ *   6. Footer year stamp.
+ *
+ * No frameworks, no build step. Loaded with `defer`.
+ */
+(() => {
+  'use strict';
 
-hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    hamburger.classList.toggle('active');
-});
+  /* ---------- 1. Mobile nav ---------- */
+  const navToggle = document.getElementById('nav-toggle');
+  const navMenu = document.getElementById('nav-menu');
 
-// Close mobile menu when clicking on a link
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        hamburger.classList.remove('active');
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+      const open = navMenu.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', String(open));
     });
-});
 
-// Navbar scroll effect
-const navbar = document.getElementById('navbar');
-let lastScroll = 0;
+    // Close menu when a link is clicked (mobile)
+    navMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
 
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
+  /* ---------- 2. Sticky nav state + active link ---------- */
+  const nav = document.getElementById('nav');
+  const sectionEls = Array.from(document.querySelectorAll('main section[id]'));
+  const navLinks = Array.from(document.querySelectorAll('.nav__link'));
+
+  const setNavScrolled = () => {
+    if (!nav) return;
+    nav.classList.toggle('is-scrolled', window.scrollY > 12);
+  };
+  setNavScrolled();
+  window.addEventListener('scroll', setNavScrolled, { passive: true });
+
+  // Active link via IntersectionObserver
+  if ('IntersectionObserver' in window && sectionEls.length) {
+    const linkById = new Map(
+      navLinks
+        .filter((a) => a.getAttribute('href')?.startsWith('#'))
+        .map((a) => [a.getAttribute('href').slice(1), a])
+    );
+
+    const activeObs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const link = linkById.get(entry.target.id);
+          if (!link) return;
+          if (entry.isIntersecting) {
+            navLinks.forEach((l) => l.classList.remove('is-active'));
+            link.classList.add('is-active');
+          }
+        });
+      },
+      { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
+    );
+    sectionEls.forEach((s) => activeObs.observe(s));
+  }
+
+  /* ---------- 3. Scroll reveal ---------- */
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+    const targets = document.querySelectorAll('.section, .project, .timeline__item, .hero__photo');
+    targets.forEach((el) => el.classList.add('reveal'));
+
+    const revealObs = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -60px 0px' }
+    );
+    targets.forEach((el) => revealObs.observe(el));
+  }
+
+  /* ---------- 4. GitHub commits widget ---------- */
+  const STATS_URL = './stats.json';
+  const numEl = document.getElementById('commits-count');
+  const updatedEl = document.getElementById('stats-updated');
+
+  /**
+   * Format a count with thousands separators.
+   * Use Intl.NumberFormat so it respects user locale.
+   */
+  const fmt = (n) => new Intl.NumberFormat(undefined).format(n);
+
+  /**
+   * Format an ISO date as "Apr 19, 2026".
+   */
+  const fmtDate = (iso) => {
+    try {
+      return new Intl.DateTimeFormat(undefined, {
+        year: 'numeric', month: 'short', day: 'numeric',
+      }).format(new Date(iso));
+    } catch {
+      return iso;
     }
-    
-    lastScroll = currentScroll;
-});
+  };
 
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const offsetTop = target.offsetTop - 80;
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// Intersection Observer for fade-in animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Observe sections for animation
-document.querySelectorAll('.section').forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(20px)';
-    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(section);
-});
-
-// Active nav link on scroll
-const sections = document.querySelectorAll('section[id]');
-
-window.addEventListener('scroll', () => {
-    const scrollPosition = window.pageYOffset + 100;
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute('id');
-        
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${sectionId}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
-    });
-});
-
-// Typing effect for hero section (optional enhancement)
-const heroTitle = document.querySelector('.hero-title');
-if (heroTitle) {
-    const text = heroTitle.textContent;
-    heroTitle.textContent = '';
-    let i = 0;
-    
-    function typeWriter() {
-        if (i < text.length) {
-            heroTitle.textContent += text.charAt(i);
-            i++;
-            setTimeout(typeWriter, 50);
-        }
+  const setStats = (count, updatedAt) => {
+    if (numEl) {
+      numEl.textContent = (typeof count === 'number') ? fmt(count) : numEl.dataset.fallback || '—';
     }
-    
-    // Start typing after page loads
-    window.addEventListener('load', () => {
-        setTimeout(typeWriter, 500);
+    if (updatedEl && updatedAt) {
+      updatedEl.textContent = `Updated ${fmtDate(updatedAt)} · auto-refreshed daily.`;
+    }
+  };
+
+  // Try the static stats.json first — that's our source of truth (updated daily by GitHub Actions).
+  fetch(STATS_URL, { cache: 'no-cache' })
+    .then((r) => {
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      return r.json();
+    })
+    .then((data) => {
+      const n = Number(data.commits_last_year);
+      if (!Number.isFinite(n)) throw new Error('No commits_last_year in stats.json');
+      setStats(n, data.updated_at);
+    })
+    .catch((err) => {
+      // Soft fallback: keep the placeholder, log for debugging only.
+      console.warn('[stats] could not load stats.json:', err.message);
+      setStats(undefined, undefined);
+      if (updatedEl) {
+        updatedEl.textContent = 'Live GitHub stats temporarily unavailable.';
+      }
     });
-}
+
+  /* ---------- 5. Footer year ---------- */
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+})();
