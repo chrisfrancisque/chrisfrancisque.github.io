@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Christopher Francisque - Machine Learning Researcher & Engineer. Specializing in parameter-efficient fine-tuning, distributed training, and AI systems.">
-    <meta name="keywords" content="Machine Learning, AI, Deep Learning, PyTorch, Computer Science, Research">
+        content="Christopher Francisque - AI/ML Engineer & Product Manager building grounded AI systems. CS @ UPenn. Experience across Pegasystems, General Dynamics, Brandeis, and Arcada.">
+    <meta name="keywords" content="Machine Learning, AI, Deep Learning, PyTorch, Software Engineering, Product Management, Computer Science">
     <meta name="author" content="Christopher Francisque">
 
-    <title>Christopher Francisque | ML Researcher & Engineer</title>
+    <title>Christopher Francisque | AI/ML Engineer & Builder</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,6 +22,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="assets/css/typewriter-style.css">
+
+    <!-- Set theme before paint to avoid flash of incorrect theme -->
+    <script>
+        (function () {
+            try {
+                var stored = localStorage.getItem('theme');
+                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var theme = stored || (prefersDark ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', theme);
+            } catch (e) { /* localStorage may be unavailable */ }
+        })();
+    </script>
 </head>
 
 <body>
@@ -37,6 +49,9 @@
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
             <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
@@ -57,15 +72,33 @@
                 <div class="hero-text">
                     <p class="hero-greeting">Hi, I'm</p>
                     <h1 class="hero-name">Christopher Francisque</h1>
-                    <h2 class="hero-title">CS @ UPenn, ML @ Brandeis</h2>
+                    <h2 class="hero-title">AI/ML Engineer &amp; Product Manager · CS @ UPenn</h2>
                     <p class="hero-description">
-                        Passionate about computer science, physics, and business. I want to solve the world's hardest
-                        problems with technology.
-                        I am seeking data science and machine learning internships for Summer 2026 where I can apply my
-                        skills
-                        to build scalable models, deliver insights, and contribute to software projects with real-world
-                        impact.
+                        I build AI systems that ship &mdash; from retrieval-augmented agents and LLM fine-tuning to
+                        distributed training pipelines and autonomous robotics. Currently a Product Manager at
+                        Pegasystems and a Computer Science master's student at the University of Pennsylvania, with
+                        an Active Secret clearance. I love turning the world's hardest problems into working software,
+                        and I'm always open to connecting on ambitious AI and engineering work.
                     </p>
+
+                    <!-- Interactive terminal -->
+                    <div class="terminal" id="terminal" role="region" aria-label="Interactive terminal — type 'help' to explore">
+                        <div class="terminal-bar">
+                            <span class="terminal-dot terminal-dot--red"></span>
+                            <span class="terminal-dot terminal-dot--yellow"></span>
+                            <span class="terminal-dot terminal-dot--green"></span>
+                            <span class="terminal-title">chris@portfolio: ~</span>
+                        </div>
+                        <div class="terminal-body" id="terminal-body">
+                            <div class="terminal-output" id="terminal-output"></div>
+                            <div class="terminal-input-line">
+                                <span class="terminal-prompt">chris@portfolio:~$</span>
+                                <input type="text" class="terminal-input" id="terminal-input"
+                                    autocomplete="off" autocapitalize="off" spellcheck="false"
+                                    aria-label="Terminal command input" />
+                            </div>
+                        </div>
+                    </div>
                     <div class="hero-buttons">
                         <a href="#projects" class="btn btn-primary">View My Work</a>
                         <a href="assets/files/resume.pdf" class="btn btn-secondary" target="_blank">
@@ -79,7 +112,7 @@
                         <a href="https://linkedin.com/in/christopherfrancisque" target="_blank" aria-label="LinkedIn">
                             <i class="fab fa-linkedin"></i>
                         </a>
-                        <a href="mailto:chrisfra@seas.upenn.edu" aria-label="Email">
+                        <a href="mailto:chrisfrancisque1@gmail.com" aria-label="Email">
                             <i class="fas fa-envelope"></i>
                         </a>
                     </div>
@@ -101,25 +134,24 @@
             <div class="about-content">
                 <div class="about-text">
                     <p>
-                        I'm a Master's student studying Computer Science at the University of Pennsylvania and
-                        currently working as a Machine Learning Researcher at Brandeis University under Hongfu Liu.
-                        My research focuses on parameter-centric learning, data-centric learning, and LLM knowledge
-                        editing.
+                        I'm a Computer Science master's student at the University of Pennsylvania who builds AI
+                        systems end-to-end. Right now I'm a Product Manager at Pegasystems, where I shipped a
+                        retrieval-augmented generation solution that cut incorrect AI responses by 20% and am
+                        designing a self-improving agentic loop that evaluates and refines its own outputs.
                     </p>
                     <p>
-                        Previously, I worked as a manufacturing engineer in high-volume production environments, where I
-                        gained hands-on experience with data analysis, data pipelines, and data cleaning.
-                        I saw firsthand how data-driven decision making could uncover risks, highlight hidden
-                        opportunities, and improve manufacturing lines and supply chain operations.
-                        I was so inspired I decided to fully pursue a career in data science and machine learning, where
-                        I can apply these skills to drive even greater impact.
+                        My path into AI runs through hands-on engineering. At General Dynamics Mission Systems I
+                        built automated pipelines that parse C++ and generate unit test plans, eliminating ~80% of
+                        manual test-planning effort. As an ML research assistant at Brandeis I reproduced methods
+                        from research papers, built distributed training across 8 TPU cores, and traced parameter
+                        evolution to find the tiny embedding layers that make or break a model. Earlier, at Arcada,
+                        I scaled a platform to 100K+ users and helped harden it against bot attacks.
                     </p>
                     <p>
-                        I am a U.S. citizen with an Active Secret Security Clearance.
-                        I am eager to bring my combination of technical expertise and proven impact to my next role, and
-                        I am fully open to relocating anywhere in the United States.
-                        Outside of work and academics, I like to learn about nutrition and bodybuilding, play
-                        basketball, read, and play chess.
+                        I am a U.S. citizen with an Active Secret Security Clearance, based in Waltham, MA, and open
+                        to relocating anywhere in the United States. I love combining research depth with shipping
+                        instincts to solve hard problems. Outside of work I'm into nutrition and bodybuilding,
+                        basketball, reading, and chess.
                     </p>
                 </div>
                 <div class="about-highlights">
@@ -128,9 +160,9 @@
                         <div>
                             <h4>Education</h4>
                             <p><strong class="school-name">University of Pennsylvania</strong></p>
-                            <p class="degree-name">Master of Computer Information and Technology</p>
+                            <p class="degree-name">MASc. Computer Science &middot; Exp. 2027</p>
                             <p><strong class="school-name">University of Massachusetts</strong></p>
-                            <p class="degree-name">B.S. Mechanical Engineering</p>
+                            <p class="degree-name">B.S. Mechanical Engineering &middot; 2024</p>
                         </div>
                     </div>
                     <div class="highlight-item">
@@ -160,17 +192,72 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">June 2025 - Present</span>
-                        <h3>Machine Learning Researcher</h3>
+                        <span class="timeline-date">May 2026 - Present</span>
+                        <h3>Product Manager</h3>
+                        <h4>Pegasystems | Waltham, MA</h4>
+                        <ul>
+                            <li>Reduced incorrect AI responses by 20% by implementing a retrieval-augmented generation
+                                solution that grounds answers in official documentation rather than model priors</li>
+                            <li>Designing a self-improving agentic loop that iteratively evaluates its own outputs,
+                                incorporates feedback, and refines responses to raise answer quality and reduce manual
+                                oversight</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Jan 2026 - May 2026</span>
+                        <h3>Software Engineer</h3>
+                        <h4>General Dynamics Mission Systems | Dedham, MA</h4>
+                        <ul>
+                            <li>Built an automated pipeline to parse C++ source and generate unit test plans using the
+                                OpenAI API, eliminating ~80% of manual test-planning effort and saving 100+ engineering
+                                hours per month</li>
+                            <li>Delivered technical AI training to the team on tools and workflows, contributing to a 2x
+                                increase in AI usage across the group</li>
+                            <li>Built a Python key-generation script to test device handling of encryption key formats,
+                                achieving 100% accuracy across 264 test vectors</li>
+                            <li>Created a GitLab CI/CD automation script that eliminated build failures on new runners</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">June 2025 - Jan 2026</span>
+                        <h3>Machine Learning Research Assistant</h3>
                         <h4>Brandeis University | Waltham, MA</h4>
                         <ul>
-                            <li>Implemented 3 research papers including LoRA and mask fine-tuning, achieving 82-90%
-                                accuracy while training only 0.037% of parameters</li>
-                            <li>Built distributed training pipeline across 8 TPU cores handling 110M parameters, solving
-                                critical PyTorch XLA synchronization issues</li>
-                            <li>Developed gradient tracking system to analyze parameter evolution, identifying critical
-                                layers whose removal caused complete model collapse</li>
-                            <li>Created pruning pipelines using learned binary masks, improving weak models by 4%</li>
+                            <li>Implemented methods from 3 research papers, achieving 82-90% accuracy while training only
+                                0.037% of parameters</li>
+                            <li>Developed pruning pipelines using learned binary masks to identify redundant parameters,
+                                improving weak models by 4%</li>
+                            <li>Created a gradient tracking system that identified critical embedding layers whose removal
+                                caused complete model collapse despite being less than 0.01% of weights</li>
+                            <li>Built a distributed training pipeline across 8 TPU cores (110M parameters, 67K samples),
+                                solving PyTorch XLA synchronization deadlocks that were causing training failures</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">June 2025 - Aug 2025</span>
+                        <h3>Software Engineer</h3>
+                        <h4>Arcada | San Francisco, CA</h4>
+                        <ul>
+                            <li>Identified a security vulnerability and deployed Cloudflare infrastructure with a rate
+                                limiting strategy, reducing bot attacks by 80%</li>
+                            <li>Scaled the platform to 100K+ unique users and $112K in revenue in 3 months from customers
+                                including OpenAI and Google</li>
+                            <li>Owned end-to-end development of core features including voting algorithm design and scroll
+                                pagination</li>
+                            <li>Improved product performance by 30% through data-driven optimization validated via A/B
+                                testing</li>
                         </ul>
                     </div>
                 </div>
@@ -182,11 +269,11 @@
                         <h3>Manufacturing Engineer</h3>
                         <h4>Raytheon | Andover, MA</h4>
                         <ul>
-                            <li>Developed Python and C++ automation scripts for production data analysis using STL
-                                containers and file I/O</li>
-                            <li>Led root cause analysis resulting in $60,000 annual cost savings</li>
-                            <li>Programmed automated manufacturing systems achieving $100,000+ in cost reductions</li>
-                            <li>Designed custom fixtures reducing process times by 10-30%</li>
+                            <li>Led manufacturing improvement projects spanning root cause analysis, automation
+                                programming, fixture design, and training standardization &mdash; delivering $160,000+ in
+                                cost savings, 10-30% cycle-time reductions, and a 25% cut in operator certification time</li>
+                            <li>Developed Python and C++ scripts to automate production data analysis for defect rates,
+                                operator performance, and statistical process control</li>
                         </ul>
                     </div>
                 </div>
@@ -199,6 +286,30 @@
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Self-Driving Toy Car</h3>
+                        <div class="project-links">
+                            <span class="project-status" title="In progress">
+                                <i class="fas fa-circle-notch"></i> In Progress
+                            </span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Autonomous RC car built on a Raspberry Pi 5 with a PCA9685 for precise PWM control of
+                        motors and servos. A PyTorch CNN maps raw camera frames to continuous steering and throttle
+                        outputs, deployed for real-time inference on edge hardware. Camera capture, inference, and
+                        actuation run in a closed-loop control system at 15+ Hz with sub-220ms end-to-end latency.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">CNN</span>
+                        <span class="tag">Raspberry Pi</span>
+                        <span class="tag">Edge AI</span>
+                        <span class="tag">Robotics</span>
+                    </div>
+                </div>
+
                 <div class="project-card">
                     <div class="project-header">
                         <h3>Parameter-Efficient Fine-tuning Study</h3>
@@ -245,25 +356,6 @@
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Portfolio Website</h3>
-                        <div class="project-links">
-                            <a href="https://github.com/chrisfrancisque/chrisfrancisque.github.io" target="_blank"
-                                aria-label="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        Code for this website to display myself and my work.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Javascript</span>
-                        <span class="tag">HTML</span>
-                        <span class="tag">CSS</span>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -278,22 +370,23 @@
                     <div class="skill-items">
                         <span class="skill-item">Python</span>
                         <span class="skill-item">C++</span>
+                        <span class="skill-item">JavaScript/TypeScript</span>
+                        <span class="skill-item">MATLAB</span>
                         <span class="skill-item">Java</span>
                         <span class="skill-item">SQL</span>
                         <span class="skill-item">Bash</span>
-                        <span class="skill-item">MATLAB</span>
-                        <span class="skill-item">Javascript</span>
                     </div>
                 </div>
 
                 <div class="skill-category">
-                    <h3><i class="fas fa-brain"></i> ML/AI Frameworks</h3>
+                    <h3><i class="fas fa-brain"></i> AI / ML</h3>
                     <div class="skill-items">
                         <span class="skill-item">PyTorch</span>
-                        <span class="skill-item">TensorFlow</span>
                         <span class="skill-item">Transformers</span>
                         <span class="skill-item">Hugging Face</span>
+                        <span class="skill-item">LLM Fine-tuning</span>
                         <span class="skill-item">LoRA</span>
+                        <span class="skill-item">RAG</span>
                     </div>
                 </div>
 
@@ -312,9 +405,9 @@
                 <div class="skill-category">
                     <h3><i class="fas fa-chart-line"></i> Data Science</h3>
                     <div class="skill-items">
-                        <span class="skill-item">Pandas</span>
                         <span class="skill-item">NumPy</span>
-                        <span class="skill-item">Jupyter</span>
+                        <span class="skill-item">Pandas</span>
+                        <span class="skill-item">Jupyter Notebook</span>
                         <span class="skill-item">Data Visualization</span>
                     </div>
                 </div>
@@ -328,14 +421,19 @@
             <h2 class="section-title">Get In Touch</h2>
             <div class="contact-content">
                 <p class="contact-text">
-                    I'm currently seeking data science and machine learning internship opportunities
-                    for Summer 2026. Feel free to reach out if you'd like to discuss research,
-                    potential collaborations, or opportunities!
+                    I'm always happy to connect about AI/ML engineering, applied research, or building
+                    ambitious products. Whether you want to discuss collaborations, opportunities, or just
+                    trade ideas, feel free to reach out.
                 </p>
                 <div class="contact-methods">
-                    <a href="mailto:chrisfra@seas.upenn.edu" class="contact-card">
+                    <a href="mailto:chrisfrancisque1@gmail.com" class="contact-card">
                         <i class="fas fa-envelope"></i>
                         <h3>Email</h3>
+                        <p>chrisfrancisque1@gmail.com</p>
+                    </a>
+                    <a href="mailto:chrisfra@seas.upenn.edu" class="contact-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>UPenn Email</h3>
                         <p>chrisfra@seas.upenn.edu</p>
                     </a>
                     <a href="https://linkedin.com/in/christopherfrancisque" target="_blank" class="contact-card">
@@ -356,7 +454,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Christopher Francisque. Built with passion.</p>
+            <p>&copy; 2026 Christopher Francisque.</p>
         </div>
     </footer>
 
