@@ -182,14 +182,14 @@ window.addEventListener('scroll', () => {
         help() {
             printLines([
                 ['Available commands:', 't-accent'],
-                ['  about       — who I am', null],
-                ['  experience  — where I\'ve worked', null],
-                ['  projects    — what I\'ve built', null],
-                ['  skills      — my tech stack', null],
-                ['  contact     — how to reach me', null],
-                ['  resume      — open my resume (PDF)', null],
-                ['  whoami      — quick summary', null],
-                ['  clear       — clear the screen', null]
+                ['  about       who I am', null],
+                ['  experience  where I\'ve worked', null],
+                ['  projects    what I\'ve built', null],
+                ['  skills      my tech stack', null],
+                ['  contact     how to reach me', null],
+                ['  resume      open my resume (PDF)', null],
+                ['  whoami      quick summary', null],
+                ['  clear       clear the screen', null]
             ]);
         },
         about() {
@@ -198,7 +198,7 @@ window.addEventListener('scroll', () => {
             smoothScrollTo('#about');
         },
         experience() {
-            printText('Pegasystems → General Dynamics → Brandeis → Arcada → Raytheon.', 't-success');
+            printText('Pegasystems → General Dynamics → Brandeis → Raytheon.', 't-success');
             printText('Scrolling to Experience…', 't-muted');
             smoothScrollTo('#experience');
         },
@@ -226,7 +226,7 @@ window.addEventListener('scroll', () => {
             window.open(RESUME_PATH, '_blank');
         },
         whoami() {
-            printText('christopher_francisque — builder of AI systems, U.S. citizen, Active Secret clearance.', 't-accent');
+            printText('christopher_francisque: builder of AI systems, U.S. citizen, Active Secret clearance.', 't-accent');
         },
         sudo() {
             printText('Nice try. You already have root here. :)', 't-error');
@@ -248,7 +248,7 @@ window.addEventListener('scroll', () => {
         if (commands[name]) {
             commands[name]();
         } else {
-            printText(`command not found: ${cmd} — type 'help' to see options.`, 't-error');
+            printText(`command not found: ${cmd}. Type 'help' to see options.`, 't-error');
         }
     }
 
@@ -265,7 +265,7 @@ window.addEventListener('scroll', () => {
     // ----- Boot sequence -----
     const bootLines = [
         ['Welcome to Chris\'s portfolio terminal.', 't-accent'],
-        ['Type a command to explore — or scroll the old-fashioned way.', 't-muted']
+        ['Type a command to explore, or scroll the old-fashioned way.', 't-muted']
     ];
 
     function typeLine(text, className, done) {
