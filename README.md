@@ -1,4 +1,3 @@
-cat > README.md << 'EOF'
 # Christopher Francisque - Portfolio
 
 Personal portfolio website showcasing my work in Machine Learning and AI research.
